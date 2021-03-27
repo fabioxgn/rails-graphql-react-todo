@@ -7,3 +7,12 @@ query TodosQuery
   }
 }
 
+mutation AddTodo($description: String!) {
+  addTodo(input: {description: $description}) {
+    todo {
+      id
+      description
+      completed
+    }
+  }
+}

@@ -1,22 +1,10 @@
 import React from 'react'
 import { useMutation } from 'react-apollo'
-import gql from 'graphql-tag'
+import { AddTodo } from './operations.graphql'
 
-const ADD_TODO = gql`
-  mutation AddTodo($description: String!) {
-    addTodo(input: {description: $description}) {
-      todo {
-        id
-        description
-        completed
-      }
-    }
-  }
-`
-
-function AddTodo () {
+function NewTodo () {
   let input
-  const [addTodo, { data }] = useMutation(ADD_TODO)
+  const [addTodo, { data }] = useMutation(AddTodo)
 
   return (
     <div className='form-group'>
@@ -39,4 +27,4 @@ function AddTodo () {
   )
 }
 
-export default AddTodo
+export default NewTodo

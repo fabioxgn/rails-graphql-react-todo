@@ -2,7 +2,7 @@ import React from 'react'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
 import Todos from './components/Todos'
-import AddTodo from './components/AddTodo'
+import AddTodo from './components/NewTodo'
 
 const client = new ApolloClient({
   fetchOptions: {
