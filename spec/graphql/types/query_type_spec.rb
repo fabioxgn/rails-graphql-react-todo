@@ -1,5 +1,9 @@
 RSpec.describe Types::QueryType do
   describe "todos" do
+    subject(:result) do
+      GraphqlTodoSchema.execute(query).as_json
+    end
+
     let!(:todos) { create_pair(:todo_item) }
 
     let(:query) do
@@ -9,10 +13,6 @@ RSpec.describe Types::QueryType do
           description
         }
       })
-    end
-
-    subject(:result) do
-      GraphqlTodoSchema.execute(query).as_json
     end
 
     it "returns all todos" do

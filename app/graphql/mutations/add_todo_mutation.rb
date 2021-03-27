@@ -5,7 +5,7 @@ module Mutations
     field :todo, Types::TodoItemType, null: true
     field :errors, [String], null: false
 
-    def resolve(description:)     
+    def resolve(description:)
       item = TodoItem.new(description: description)
 
       if item.save
