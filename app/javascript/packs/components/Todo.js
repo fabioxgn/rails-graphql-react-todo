@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Todo(props) {
+function Todo (props) {
   const todo = props.todo
   return <li>{todo.description}</li>
 }

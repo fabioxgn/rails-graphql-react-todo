@@ -17,7 +17,7 @@ const client = new ApolloClient({
   uri: 'http://localhost:3000/graphql'
 })
 
-function App() {
+function App () {
   return (
     <ApolloProvider client={client}>
       <div className='container'>

@@ -6,13 +6,13 @@ function NewTodo () {
   let input
   const [addTodo, { data }] = useMutation(AddTodo, {
     update: (cache, { data: { addTodo } }) => {
-      const todo = addTodo.todo;
+      const todo = addTodo.todo
       if (todo) {
-        const currentTodos = cache.readQuery({ query: TodosQuery });
+        const currentTodos = cache.readQuery({ query: TodosQuery })
         cache.writeQuery({
           query: TodosQuery,
-          data: {todos: [todo].concat(currentTodos.todos)},
-        });
+          data: { todos: [todo].concat(currentTodos.todos) }
+        })
       }
     }
   })
