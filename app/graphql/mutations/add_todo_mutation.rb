@@ -3,7 +3,7 @@ module Mutations
     argument :description, String, required: true
 
     field :todo, Types::TodoItemType, null: true
-    field :errors, [String], null: false
+    field :errors, [String], null: true
 
     def resolve(description:)
       item = TodoItem.new(description: description)
