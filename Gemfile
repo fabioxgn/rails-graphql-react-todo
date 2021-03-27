@@ -54,10 +54,11 @@ group :test do
   gem "rspec-rails"
   gem "shoulda-matchers"
   gem "factory_bot_rails"
+  gem "simplecov", require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 gem "graphql", "~> 1.12"
-gem 'graphiql-rails', group: :development
+gem "graphiql-rails", group: :development
