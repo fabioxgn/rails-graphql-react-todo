@@ -1,10 +1,21 @@
 import React from 'react'
 import { useMutation } from 'react-apollo'
-import { AddTodo } from './operations.graphql'
+import { AddTodo, TodosQuery } from './operations.graphql'
 
 function NewTodo () {
   let input
-  const [addTodo, { data }] = useMutation(AddTodo)
+  const [addTodo, { data }] = useMutation(AddTodo, {
+    update: (cache, { data: { addTodo } }) => {
+      const todo = addTodo.todo;
+      if (todo) {
+        const currentTodos = cache.readQuery({ query: TodosQuery });
+        cache.writeQuery({
+          query: TodosQuery,
+          data: {todos: [todo].concat(currentTodos.todos)},
+        });
+      }
+    }
+  })
 
   return (
     <div className='form-group'>
