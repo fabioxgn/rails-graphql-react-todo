@@ -1,4 +1,18 @@
 RSpec.describe Mutations::AddTodoMutation, type: :request do
+  def mutation(description:)
+    <<~GQL
+      mutation {
+        addTodo(input: { description: "#{description}" }) {
+          todo {
+            id
+            description
+          }
+          errors
+        }
+      }
+    GQL
+  end
+
   describe ".resolve" do
     let(:description) { Faker::Lorem.sentence }
 
@@ -22,9 +36,11 @@ RSpec.describe Mutations::AddTodoMutation, type: :request do
     context "when validation errors" do
       let(:todo) { instance_double(TodoItem) }
 
-      before { allow(TodoItem).to receive(:new).and_return(TodoItem.new) }
+      before do
+        allow(TodoItem).to receive(:new).and_return(TodoItem.new)
+      end
 
-      it "returns erros" do    
+      it "returns erros" do
         post "/graphql", params: { query: mutation(description: "ignored") }
         json = JSON.parse(response.body)
         puts json
@@ -33,19 +49,5 @@ RSpec.describe Mutations::AddTodoMutation, type: :request do
         expect(errors).to eq ["Description can't be blank"]
       end
     end
-  end
-
-  def mutation(description:)
-    <<~GQL
-      mutation {
-        addTodo(input: { description: "#{description}" }) {
-          todo {
-            id
-            description#{'          '}
-          }
-          errors
-        }
-      }
-    GQL
   end
 end
