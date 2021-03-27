@@ -4,7 +4,7 @@ module Types
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
     
-    field :todos, [Types::TodoItemType], null: false, description: "An example field added by the generator"
+    field :todos, [Types::TodoItemType], null: false, description: "All todo items"
     def todos
       TodoItem.all
     end
