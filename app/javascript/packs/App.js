@@ -2,6 +2,7 @@ import React from 'react'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
 import Todos from './components/Todos'
+import AddTodo from './components/AddTodo'
 
 const client = new ApolloClient({
   fetchOptions: {
@@ -19,10 +20,11 @@ const client = new ApolloClient({
 const App = () => (
   <ApolloProvider client={client}>
     <div className='container'>
-      <nav className='navbar navbar-dark bg-primary'>
+      <nav className='navbar navbar-dark bg-primary mb-3'>
         <a className='navbar-brand' href='#'>React and GraphQL - Todo Application</a>
       </nav>
       <div>
+        <AddTodo />
         <Todos />
       </div>
     </div>
