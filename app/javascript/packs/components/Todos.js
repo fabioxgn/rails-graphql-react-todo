@@ -1,18 +1,8 @@
 import React from 'react'
 import { Query } from 'react-apollo'
-import gql from 'graphql-tag'
+import { TodosQuery } from "./operations.graphql";
 
 import Todo from './Todo'
-
-const TodosQuery = gql`
-{
-    todos {
-        id
-        description
-        completed
-    }
-}
-`
 
 const Todos = () => (
   <Query query={TodosQuery}>
