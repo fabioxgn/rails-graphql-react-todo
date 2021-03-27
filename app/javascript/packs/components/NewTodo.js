@@ -4,7 +4,7 @@ import { AddTodo, TodosQuery } from './operations.graphql'
 
 function NewTodo () {
   let input
-  const [addTodo, { data }] = useMutation(AddTodo, {
+  const [addTodo] = useMutation(AddTodo, {
     update: (cache, { data: { addTodo } }) => {
       const todo = addTodo.todo
       if (todo) {
