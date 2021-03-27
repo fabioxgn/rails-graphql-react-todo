@@ -1,0 +1,34 @@
+exclude_paths:
+  - vendor
+  - db/migrate
+
+directories:
+  "app/controllers":
+    NestedIterators:
+      max_allowed_nesting: 2
+    UnusedPrivateMethod:
+      enabled: false
+    InstanceVariableAssumption:
+      enabled: false
+  "app/mailers":
+    InstanceVariableAssumption:
+      enabled: false
+  "app/helpers":
+    IrresponsibleModule:
+      enabled: false
+    UtilityFunction:
+      enabled: false
+  "app/models":
+    InstanceVariableAssumption:
+      enabled: false
+  "app/forms":
+    Attribute:
+      enabled: false
+
+detectors:
+  IrresponsibleModule:
+    enabled: false
+  TooManyStatements:
+    enabled: false
+  UtilityFunction:
+    public_methods_only: true

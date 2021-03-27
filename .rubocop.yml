@@ -1,0 +1,43 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - bin/**/*
+    - db/**/*
+    - tmp/**/*
+    - vendor/**/*
+    - node_modules/**/*
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  StyleGuideCopsOnly: true
+  TargetRubyVersion: 2.6
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+RSpec/DescribeClass:
+  Exclude:
+    - spec/features/*
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - spec/system/*
+    - spec/request/*
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/ImplicitSubject:
+  EnforcedStyle: single_statement_only
+
+RSpec/DescribeClass:
+  Exclude:
+    - spec/views/**/*.rb
+    - spec/features/**/*.rb
+    - spec/system/**/*.rb
+
+Rails:
+  Enabled: true
