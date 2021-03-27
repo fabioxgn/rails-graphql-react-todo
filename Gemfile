@@ -36,6 +36,7 @@ group :development, :test do
   gem "brakeman", require: false
   gem "reek", require: false
   gem "pry-rails"
+  gem "faker"
 end
 
 group :development do
