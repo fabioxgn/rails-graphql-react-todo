@@ -17,18 +17,20 @@ const client = new ApolloClient({
   uri: 'http://localhost:3000/graphql'
 })
 
-const App = () => (
-  <ApolloProvider client={client}>
-    <div className='container'>
-      <nav className='navbar navbar-dark bg-primary mb-3'>
-        <a className='navbar-brand' href='#'>React and GraphQL - Todo Application</a>
-      </nav>
-      <div>
-        <AddTodo />
-        <Todos />
+function App() {
+  return (
+    <ApolloProvider client={client}>
+      <div className='container'>
+        <nav className='navbar navbar-dark bg-primary mb-3'>
+          <a className='navbar-brand' href='#'>React and GraphQL - Todo Application</a>
+        </nav>
+        <div>
+          <AddTodo />
+          <Todos />
+        </div>
       </div>
-    </div>
-  </ApolloProvider>
-)
+    </ApolloProvider>
+  )
+}
 
 export default App
