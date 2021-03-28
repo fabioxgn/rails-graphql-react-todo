@@ -14,6 +14,7 @@ function Todo (props) {
         }}
       />
       {todo.description}
+      <i className="bi-trash" />
     </li>
   )
 }
