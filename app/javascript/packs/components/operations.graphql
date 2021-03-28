@@ -16,3 +16,13 @@ mutation AddTodo($description: String!) {
     }
   }
 }
+
+mutation UpdateTodo($id: ID!, $completed: Boolean!) {
+  updateTodo(input: {id: $id, completed: $completed}) {
+    todo {
+      id
+      description
+      completed
+    }
+  }
+}
