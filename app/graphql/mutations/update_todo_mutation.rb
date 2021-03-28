@@ -3,16 +3,11 @@ module Mutations
     argument :id, ID, required: true
     argument :completed, Boolean, required: true
 
-    field :todo, Types::TodoItemType, null: true
-    field :errors, [String], null: true
+    type Types::TodoItemType
 
     def resolve(id:, completed:)
-      todo = TodoItem.find(id)
-
-      if todo.update(completed: completed)
-        { todo: todo }
-      else
-        { errors: todo.errors.full_messages }
+      TodoItem.find(id).tap do |todo|
+        todo.update(completed: completed)
       end
     end
   end

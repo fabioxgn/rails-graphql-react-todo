@@ -3,11 +3,9 @@ RSpec.describe Mutations::UpdateTodoMutation, type: :request do
     <<~GQL
       mutation {
         updateTodo(input: { id: #{todo.id}, completed: #{completed} }) {
-          todo {
-            id
-            description
-            completed
-          }
+          id
+          description
+          completed
           errors
         }
       }
@@ -35,7 +33,7 @@ RSpec.describe Mutations::UpdateTodoMutation, type: :request do
         todo.save!(validate: false)
       end
 
-      it "returns erros" do
+      it "returns errors" do
         errors = update_todo["data"]["updateTodo"]["errors"]
 
         expect(errors).to eq ["Description can't be blank"]
