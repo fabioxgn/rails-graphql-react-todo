@@ -13,23 +13,25 @@ function Todo (props) {
         const currentTodos = cache.readQuery({ query: TodosQuery })
         cache.writeQuery({
           query: TodosQuery,
-          data: { todos: currentTodos.todos.filter(todo => todo.id != destroyed.id) }
+          data: { todos: currentTodos.todos.filter(todo => todo.id !== destroyed.id) }
         })
       }
     }
   })
-  return(
+  return (
     <li>
-      <input className='mr-2' type='checkbox' checked={todo.completed} id={`todo_${todo.id}`}
+      <input
+        className='mr-2' type='checkbox' checked={todo.completed} id={`todo_${todo.id}`}
         onChange={e => {
           updateTodo({ variables: { id: e.target.id.replace(/^todo_/, ''), completed: e.target.checked } })
         }}
       />
       {todo.description}
-      <a href="#" className='text-reset'>
-        <i className="bi-trash" id={`todo_${todo.id}`}
+      <a href='#' className='text-reset'>
+        <i
+          className='bi-trash' id={`todo_${todo.id}`}
           onClick={e => {
-            destroyTodo({ variables: { id: e.target.id.replace(/^todo_/, '') }})
+            destroyTodo({ variables: { id: e.target.id.replace(/^todo_/, '') } })
           }}
         />
       </a>
