@@ -1,4 +1,4 @@
-RSpec.describe Mutations::UpdateTodoMutation, type: :request do
+RSpec.describe Mutations::DestroyTodoMutation, type: :request do
   def mutation(id:)
     <<~GQL
       mutation {
