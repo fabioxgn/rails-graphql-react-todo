@@ -26,3 +26,11 @@ mutation UpdateTodo($id: ID!, $completed: Boolean!) {
     }
   }
 }
+
+mutation DestroyTodo($id: ID!) {
+  destroyTodo(input: {id: $id}) {
+    id
+    description
+    completed
+  }
+}
