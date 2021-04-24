@@ -1,4 +1,4 @@
-RSpec.describe TodosController do
+RSpec.describe TodoController do
   describe "#index" do
     subject(:index) { get "/" }
 
